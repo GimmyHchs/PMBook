@@ -32,3 +32,12 @@ $factory->define(App\Project\Project::class, function (Faker\Generator $faker) {
         'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
     ];
 });
+
+$factory->define(App\Project\Folder::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
