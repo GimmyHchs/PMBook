@@ -24,8 +24,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Project\Project::class, function (Faker\Generator $faker) {
-    static $password;
-
     return [
         'name' => $faker->word,
         'nick' => $faker->word,
@@ -34,10 +32,15 @@ $factory->define(App\Project\Project::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Project\Folder::class, function (Faker\Generator $faker) {
-    static $password;
-
     return [
         'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\File::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'type' => $faker->word,
         'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
     ];
 });

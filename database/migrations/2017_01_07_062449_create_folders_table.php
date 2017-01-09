@@ -19,6 +19,10 @@ class CreateFoldersTable extends Migration
             $table->text('name')->comment('資料夾名稱');
             $table->text('description')->nullable()->comment('資料夾描述');
             $table->timestamps();
+
+
+            //foreign Key Set
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 
