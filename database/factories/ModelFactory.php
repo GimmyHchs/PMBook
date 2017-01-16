@@ -44,3 +44,10 @@ $factory->define(App\Project\File\File::class, function (Faker\Generator $faker)
         'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
     ];
 });
+$factory->define(App\Project\File\Member::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'type' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});

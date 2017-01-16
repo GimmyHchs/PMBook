@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 use Tests\TestCase;
 use App\Project\File\File;
+use App\Project\File\Member;
 use App\Project\Folder;
 
 class FileTest extends TestCase
@@ -15,7 +16,7 @@ class FileTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * 產生Class.
+     * 產生File.
      *
      * @group unit
      * @group project
@@ -35,7 +36,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * 產生Class.
+     * 產生File.
      *
      * @group unit
      * @group project
@@ -52,6 +53,58 @@ class FileTest extends TestCase
 
         $this->assertEquals($file->name, 'Article');
         $this->assertEquals($file->type, 'php');
+    }
+
+    /**
+     * File關聯於Folder.
+     *
+     * @group unit
+     * @group project
+     */
+    public function testCanAssignFolder()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $folder = Folder::create([
+            'name' => 'folder',
+            'description' => 'pp',
+        ]);
+        $file = factory(File::class)->create([
+            'name' => 'FirstClass',
+            'type' => 'Class',
+        ]);
+
+        $file->assignFolder($folder);
+        $target = $file->folder()->first();
+
+        $this->assertEquals($target->name, 'folder');
+        $this->assertEquals($target->description, 'pp');
+    }
+
+    /**
+     * File關聯於Member.
+     *
+     * @group unit
+     * @group project
+     */
+    public function testCanAddMember()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $member = Member::create([
+            'name' => 'a',
+            'description' => 'pp',
+        ]);
+        $file = factory(File::class)->create([
+            'name' => 'FirstClass',
+            'type' => 'Class',
+        ]);
+
+        $file->addMember($member);
+        $target = $file->members()->first();
+
+        $this->assertEquals($target->name, 'a');
+        $this->assertEquals($target->description, 'pp');
     }
 
 }

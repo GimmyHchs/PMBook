@@ -2,6 +2,8 @@
 
 namespace App\Project;
 
+use App\Project\File\File;
+
 class Folder extends ProjectEloquent
 {
     protected $table = 'folders';
@@ -17,9 +19,21 @@ class Folder extends ProjectEloquent
     {
         return $this->belongsTo(Project::class);
     }
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
 
+    /*------------------------------------------------------------------------**
+    ** Methods
+    **------------------------------------------------------------------------*/
     public function assignProject($project)
     {
         return $this->project()->associate($project)->save();
+    }
+
+    public function addFile($file)
+    {
+        return $this->files()->save($file);
     }
 }

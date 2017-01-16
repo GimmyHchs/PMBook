@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 abstract class ProjectEloquent extends Model
 {
-    
+
 }
