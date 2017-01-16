@@ -22,3 +22,57 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Project\Project::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'nick' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+
+$factory->define(App\Project\Folder::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\File::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'type' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Member::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'type' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Method::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'type' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Types\FileType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Types\MemberType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Types\MethodType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
