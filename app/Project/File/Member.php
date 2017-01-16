@@ -6,6 +6,7 @@ class Member extends FileEloquent
 {
     protected $table = "members";
     protected $fillable =[
+        'file_id',
         'name',                 // 成員名稱
         'type',                 // 成員類型
         'description',          // 成員描述

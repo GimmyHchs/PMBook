@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use App\Project\File\File;
 use App\Project\File\Member;
+use App\Project\File\Method;
 use App\Project\Folder;
 
 class FileTest extends TestCase
@@ -102,6 +103,32 @@ class FileTest extends TestCase
 
         $file->addMember($member);
         $target = $file->members()->first();
+
+        $this->assertEquals($target->name, 'a');
+        $this->assertEquals($target->description, 'pp');
+    }
+
+    /**
+     * File關聯於Method.
+     *
+     * @group unit
+     * @group project
+     */
+    public function testCanAddMethod()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $method = Method::create([
+            'name' => 'a',
+            'description' => 'pp',
+        ]);
+        $file = factory(File::class)->create([
+            'name' => 'FirstClass',
+            'type' => 'Class',
+        ]);
+
+        $file->addMethod($method);
+        $target = $file->methods()->first();
 
         $this->assertEquals($target->name, 'a');
         $this->assertEquals($target->description, 'pp');

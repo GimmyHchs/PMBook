@@ -24,6 +24,10 @@ class File extends FileEloquent
     {
         return $this->hasMany(Member::class);
     }
+    public function methods()
+    {
+        return $this->hasMany(Method::class);
+    }
 
     /*------------------------------------------------------------------------**
     ** Methods
@@ -35,5 +39,9 @@ class File extends FileEloquent
     public function addMember($member)
     {
         return $this->members()->save($member);
+    }
+    public function addMethod($method)
+    {
+        return $this->methods()->save($method);
     }
 }
