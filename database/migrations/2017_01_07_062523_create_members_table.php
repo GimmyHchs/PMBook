@@ -16,13 +16,14 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('file_id')->unsined()->nullable();
+            $table->integer('member_type_id')->unsigned()->nullable();
             $table->string('name')->comment('成員名稱');
             $table->string('type')->comment('成員類型')->nullable();
             $table->string('description')->comment('成員描述');
             $table->timestamps();
 
             //foreign Key Set
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->foreign('member_type_id')->references('id')->on('member_types')->onDelete('cascade');
         });
     }
 

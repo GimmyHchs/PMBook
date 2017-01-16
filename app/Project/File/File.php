@@ -3,6 +3,7 @@
 namespace App\Project\File;
 
 use App\Project\Folder;
+use App\Project\File\Types\FileType;
 
 class File extends FileEloquent
 {
@@ -28,6 +29,10 @@ class File extends FileEloquent
     {
         return $this->hasMany(Method::class);
     }
+    public function type()
+    {
+        return $this->belongsTo(FileType::class, 'file_type_id');
+    }
 
     /*------------------------------------------------------------------------**
     ** Methods
@@ -43,5 +48,9 @@ class File extends FileEloquent
     public function addMethod($method)
     {
         return $this->methods()->save($method);
+    }
+    public function assignType($type)
+    {
+        return $this->type()->associate($type)->save();
     }
 }

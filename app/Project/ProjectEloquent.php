@@ -1,12 +1,12 @@
 <?php
 namespace App\Project;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Eloquent;
 
 /**
  * Project類別核心
  */
-abstract class ProjectEloquent extends Model
+abstract class ProjectEloquent extends Eloquent
 {
 
 }

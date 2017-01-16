@@ -9,6 +9,7 @@ use Tests\TestCase;
 use App\Project\File\File;
 use App\Project\File\Member;
 use App\Project\File\Method;
+use App\Project\File\Types\FileType;
 use App\Project\Folder;
 
 class FileTest extends TestCase
@@ -79,6 +80,32 @@ class FileTest extends TestCase
         $target = $file->folder()->first();
 
         $this->assertEquals($target->name, 'folder');
+        $this->assertEquals($target->description, 'pp');
+    }
+
+    /**
+     * File關聯於FileType.
+     *
+     * @group unit
+     * @group project
+     */
+    public function testCanAssignType()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $type = FileType::create([
+            'name' => 'Class',
+            'description' => 'pp',
+        ]);
+        $file = factory(File::class)->create([
+            'name' => 'FirstClass',
+            'type' => 'Class',
+        ]);
+
+        $file->assignType($type);
+        $target = $file->type()->first();
+
+        $this->assertEquals($target->name, 'Class');
         $this->assertEquals($target->description, 'pp');
     }
 

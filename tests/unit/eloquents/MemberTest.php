@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use App\Project\File\Member;
 use App\Project\File\File;
+use App\Project\File\Types\MemberType;
 use App\Project\Folder;
 
 class MemberTest extends TestCase
@@ -79,6 +80,29 @@ class MemberTest extends TestCase
 
         $this->assertEquals($target->name, 'MyFile');
         $this->assertEquals($target->type, 'Class');
+    }
+
+    /**
+     * MemberType 與 Member關聯.
+     *
+     * @group unit
+     * @group project
+     */
+    public function testCanAssignType()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $type = factory(MemberType::class)->create([
+            'name' => 'Class',
+            'description' => 'A Basic Class',
+        ]);
+        $member = factory(Member::class)->create([
+            'name' => 'member',
+        ]);
+        $member->assignType($type);
+        $target = $member->type()->first();
+
+        $this->assertEquals($target->name, 'Class');
     }
 
 }

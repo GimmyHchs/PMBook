@@ -58,3 +58,21 @@ $factory->define(App\Project\File\Method::class, function (Faker\Generator $fake
         'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
     ];
 });
+$factory->define(App\Project\File\Types\FileType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Types\MemberType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});
+$factory->define(App\Project\File\Types\MethodType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+    ];
+});

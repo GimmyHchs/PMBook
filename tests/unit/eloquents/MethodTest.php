@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 use Tests\TestCase;
 use App\Project\File\Method;
+use App\Project\File\Types\MethodType;
 use App\Project\File\File;
 use App\Project\Folder;
 
@@ -79,6 +80,30 @@ class MethodTest extends TestCase
 
         $this->assertEquals($target->name, 'MyFile');
         $this->assertEquals($target->type, 'Class');
+    }
+
+
+    /**
+     * MethodType 與 Method關聯.
+     *
+     * @group unit
+     * @group project
+     */
+    public function testCanAssignType()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $type = factory(MethodType::class)->create([
+            'name' => 'Class',
+            'description' => 'A Basic Class',
+        ]);
+        $method = factory(Method::class)->create([
+            'name' => 'member',
+        ]);
+        $method->assignType($type);
+        $target = $method->type()->first();
+
+        $this->assertEquals($target->name, 'Class');
     }
 
 }
