@@ -32,6 +32,10 @@ class Project extends ProjectEloquent
     {
         return $this->folders()->save($folder);
     }
+    public function assignUser($user)
+    {
+        return $this->users()->syncWithoutDetaching([$user->id]);
+    }
     public function getUsers()
     {
         return $this->users()->get();

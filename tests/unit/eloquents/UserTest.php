@@ -74,10 +74,16 @@ class UserTest extends TestCase
             'email' => 'test@test.com.tw',
         ]);
         $project = factory(Project::class)->create(['name' => 'myproject']);
+        $project2 = factory(Project::class)->create(['name' => 'myproject2']);
+
         $user->joinProject($project);
-        $target = $project->users()->first();
+        $user->joinProject($project2);
+        $user->joinProject($project); // will not work
+
+        $target = $project->users()->orderBy('id','ASC')->first();
         $this->assertEquals($user->name, 'Test User');
         $this->assertEquals($user->email, 'test@test.com.tw');
+        $this->assertEquals(count($user->projects()->get()), 2);
     }
 
 }

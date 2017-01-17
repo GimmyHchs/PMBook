@@ -57,7 +57,7 @@ class MethodTest extends TestCase
     }
 
     /**
-     * 產生Method.
+     * File關聯Method.
      *
      * @group unit
      * @group project

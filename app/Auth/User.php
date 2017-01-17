@@ -31,4 +31,8 @@ class User extends Authenticatable
     /*------------------------------------------------------------------------**
     ** Method
     **------------------------------------------------------------------------*/
+    public function joinProject($project)
+    {
+        return $this->projects()->syncWithoutDetaching([$project->id]);
+    }
 }
