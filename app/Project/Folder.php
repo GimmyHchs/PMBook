@@ -36,4 +36,11 @@ class Folder extends ProjectEloquent
     {
         return $this->files()->save($file);
     }
+
+    public function getUsers()
+    {
+        if($this->project){
+            return $this->project->getUsers();
+        }
+    }
 }

@@ -53,4 +53,11 @@ class File extends FileEloquent
     {
         return $this->type()->associate($type)->save();
     }
+    public function getUsers()
+    {
+        if($this->folder)
+        {
+            return $this->folder->getUsers();
+        }
+    }
 }
