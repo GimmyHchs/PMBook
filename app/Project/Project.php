@@ -2,6 +2,8 @@
 
 namespace App\Project;
 
+use App\Auth\User;
+
 class Project extends ProjectEloquent
 {
     protected $table = 'projects';
@@ -18,6 +20,10 @@ class Project extends ProjectEloquent
     {
         return $this->hasMany(Folder::class);
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     /*------------------------------------------------------------------------**
     ** methods
@@ -25,5 +31,9 @@ class Project extends ProjectEloquent
     public function addFolder($folder)
     {
         return $this->folders()->save($folder);
+    }
+    public function getUsers()
+    {
+        return $this->users()->get();
     }
 }

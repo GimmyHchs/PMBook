@@ -167,8 +167,9 @@ return [
          * Package Service Providers...
          */
 
-        //
-
+        // Role and Permission Manage
+        Hchs\Judge\JudgeServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
