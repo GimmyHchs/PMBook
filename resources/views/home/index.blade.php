@@ -1,4 +1,4 @@
 @extends('layouts.app')
-@section('body')
+@section('content')
     home index
 @stop

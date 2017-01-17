@@ -9,8 +9,18 @@
     </head>
     <body>
         @include('partials.nav')
-        <div id="app">
-            @yield('body')
+        <div id="app" class="ui stackable grid body-content">
+            <div class="three wide column">
+                @yield('left-nav')
+            </div>
+
+            <div class="ten wide column">
+                @yield('content')
+            </div>
+
+            <div class="three wide column">
+                @yield('right-nav')
+            </div>
         </div>
     </body>
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
