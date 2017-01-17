@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
+        @include('partials.nav')
         <div id="app">
             @yield('body')
         </div>
