@@ -15,6 +15,8 @@ require('./bootstrap');
 
  Vue.component('loading', require('./components/modules/Progress.vue'));
  Vue.component('message', require('./components/modules/Message.vue'));
+
+ Vue.component('project-create', require('./components/project/Create.vue'));
  Vue.component('project-right-nav', require('./components/project/RightNav.vue'));
 
 const app = new Vue({

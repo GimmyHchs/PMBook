@@ -8,6 +8,7 @@
                 <i class="fa right-icon fa-plus-square-o" aria-hidden="true"></i> 建立專案
             </a>
         </div>
+        <project-create></project-create>
     </span>
 </template>
 

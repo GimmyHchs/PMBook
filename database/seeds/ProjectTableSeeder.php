@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Project\Project;
+use App\Auth\User;
 
 class ProjectTableSeeder extends Seeder
 {
@@ -12,6 +13,9 @@ class ProjectTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Project::class, 4)->create();
+
+        $projects = factory(Project::class, 4)->create();
+        $user = User::find(1);
+        $user->joinProjects($projects);
     }
 }

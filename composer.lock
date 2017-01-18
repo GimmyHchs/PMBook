@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1e7ac6480813d7d2666a23a17dc35676",
-    "content-hash": "c4bdf187608a827fa862def498b9e553",
+    "hash": "c9aabc83f795a40ed75bfe3ef40218cd",
+    "content-hash": "3cacc39be3161b04539834eb6f63f6c2",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -163,7 +163,7 @@
         },
         {
             "name": "hchs/judge",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hchstera/judge.git",

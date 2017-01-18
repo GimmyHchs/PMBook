@@ -13,7 +13,7 @@ class User extends Authenticatable
     protected $table = "users";
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'project_prefix', 'email', 'password',
     ];
 
     protected $hidden = [
@@ -34,5 +34,9 @@ class User extends Authenticatable
     public function joinProject($project)
     {
         return $this->projects()->syncWithoutDetaching([$project->id]);
+    }
+    public function joinProjects($projects)
+    {
+        return $this->projects()->syncWithoutDetaching($projects->pluck('id')->toArray());
     }
 }

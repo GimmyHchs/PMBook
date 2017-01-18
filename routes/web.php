@@ -12,4 +12,9 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::resource('project', 'ProjectController');
+
+
+
+Route::group(['namespace' => 'Project'], function () {
+    Route::resource('project', 'ProjectController');
+});

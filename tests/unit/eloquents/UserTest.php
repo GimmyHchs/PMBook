@@ -32,6 +32,7 @@ class UserTest extends TestCase
 
         $user = User::create([
             'name' => 'Test User',
+            'project_prefix' => 'ttttt',
             'password' => encrypt('123456'),
             'email' => 'test@test.com.tw',
         ]);
@@ -83,6 +84,30 @@ class UserTest extends TestCase
         $target = $project->users()->orderBy('id','ASC')->first();
         $this->assertEquals($user->name, 'Test User');
         $this->assertEquals($user->email, 'test@test.com.tw');
+        $this->assertEquals(count($user->projects()->get()), 2);
+    }
+
+    /**
+     * User 與 Project關聯.
+     *
+     * @group unit
+     * @group auth
+     */
+    public function testCanJoinProjects()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+
+        $user = factory(User::class)->create([
+            'name' => 'Test User',
+            'password' => encrypt('123456'),
+            'email' => 'test@test.com.tw',
+        ]);
+        $project = factory(Project::class)->create(['name' => 'myproject']);
+        $project2 = factory(Project::class)->create(['name' => 'myproject2']);
+
+        $projects = Project::all();
+        $user->joinProjects($projects);
+
         $this->assertEquals(count($user->projects()->get()), 2);
     }
 
