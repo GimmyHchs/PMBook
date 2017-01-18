@@ -1,3 +1,4 @@
+// top-nav
 .corner-fix {
     position: absolute;
     left: -1.75em;
@@ -6,6 +7,18 @@
 .nav-icon {
     margin-right: 5px;
 }
+
+// left menu
+.left-menu{
+    margin-top: 80px !important;
+}
+
+// right menu
+.right-icon{
+    position: absolute;
+    right: 1em;
+}
+
 // RWD for 0px ~ 767px
 @media (max-width:767px){
     .corner-fix {

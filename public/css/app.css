@@ -37152,6 +37152,15 @@ html.ios body {
   margin-right: 5px;
 }
 
+.left-menu {
+  margin-top: 80px !important;
+}
+
+.right-icon {
+  position: absolute;
+  right: 1em;
+}
+
 @media (max-width: 767px) {
   .corner-fix {
     bottom: 0.7em;

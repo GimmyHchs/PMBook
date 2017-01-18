@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('left-nav')
-    left
+    @include('project.left-menu')
 @endsection
 @section('content')
         <table class="ui compact celled definition table">
@@ -67,5 +67,5 @@
         </table>
 @endsection
 @section('right-nav')
-    right
+    <project-right-nav></project-right-nav>
 @endsection

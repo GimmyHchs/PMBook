@@ -13,7 +13,9 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+ Vue.component('loading', require('./components/modules/Progress.vue'));
+ Vue.component('message', require('./components/modules/Message.vue'));
+ Vue.component('project-right-nav', require('./components/project/RightNav.vue'));
 
 const app = new Vue({
     el: '#app'
