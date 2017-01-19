@@ -18,7 +18,7 @@
         .column {
             max-width: 450px;
         }
-  </style>
+    </style>
     <body>
         <div class="ui middle aligned center aligned grid">
             <div class="column">
@@ -28,24 +28,25 @@
                         Log-in to your account
                     </div>
                 </h2>
-            <form class="ui large form">
-            <div class="ui stacked segment">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
+            <form action="{{ url('/login') }}" class="ui large form" method="post" role="form" >
+                {{csrf_field()}}
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="email" placeholder="E-mail address" required>
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
                     </div>
+                    <button type="submit" class="ui fluid large teal submit button">Login</button>
                 </div>
-                <div class="ui fluid large teal submit button">Login</div>
-            </div>
 
-            <div class="ui error message">123456</div>
+                <div class="ui error message">123456</div>
 
             </form>
 

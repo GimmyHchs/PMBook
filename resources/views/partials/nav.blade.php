@@ -17,9 +17,9 @@
            Notification
            <a class="ui orange circular label corner-fix">2</a>
         </div>
-        <div class="ui right item">
+        <a href="{{ url('/logout') }}" class="ui right item">
            <i class="fa fa-sign-out nav-icon" aria-hidden="true"></i>
            Logout
-        </div>
+       </a>
     </div>
 </div>

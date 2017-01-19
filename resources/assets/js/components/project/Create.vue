@@ -32,7 +32,7 @@
                                 <label>專案名稱</label>
                                 <div class="ui labeled input">
                                   <div class="ui label">
-                                    {{user.name}}
+                                    prefix
                                   </div>
                                   <input type="text" name="name" placeholder="專案名稱" v-model="inputs.name">
                                 </div>

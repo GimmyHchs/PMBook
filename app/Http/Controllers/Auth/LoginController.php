@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Auth;
+
+
 
 class LoginController extends Controller
 {
@@ -27,5 +32,22 @@ class LoginController extends Controller
     public function login()
     {
         return view('auth.login');
+    }
+
+    public function attempt(Request $request)
+    {
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+        {
+            return redirect()->intended($this->redirectTo);
+        }
+
+        return redirect('/login')->withErrors('登入失敗');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/login');
     }
 }
