@@ -33,7 +33,8 @@ class ProjectController extends Controller
         JavaScript::put([
             'user' => $user->toSafeArray()
         ]);
-        return view('project.index');
+        $projects = $this->projects->getAll();
+        return view('project.index', compact('projects'));
     }
 
     /**
