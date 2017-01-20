@@ -39,4 +39,11 @@ class User extends Authenticatable
     {
         return $this->projects()->syncWithoutDetaching($projects->pluck('id')->toArray());
     }
+    public function toSafeArray()
+    {
+        return array_only($this->toArray(),[
+            'name',
+            'project_prefix',
+        ]);
+    }
 }

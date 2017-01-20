@@ -27,6 +27,7 @@ $factory->define(App\Auth\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Project\Project::class, function (Faker\Generator $faker) {
     return [
+        'prefix' => $faker->word,
         'name' => $faker->word,
         'nick' => $faker->word,
         'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),

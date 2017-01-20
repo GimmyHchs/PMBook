@@ -24,5 +24,6 @@
             </div>
         </div>
     </body>
+    @include('partials.PmbData')
     <script src="{{asset('js/app.js')}}" charset="utf-8"></script>
 <html>

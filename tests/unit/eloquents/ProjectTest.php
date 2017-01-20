@@ -26,6 +26,7 @@ class ProjectTest extends TestCase
         $this->printTestStartMessage(__FUNCTION__);
 
         $project = Project::create([
+            'prefix' => 'myprefix',
             'name' => 'myproject',
             'nick' => 'pp',
         ]);
@@ -45,6 +46,7 @@ class ProjectTest extends TestCase
         $this->printTestStartMessage(__FUNCTION__);
 
         $project = Project::create([
+            'prefix' => 'myprefix',
             'name' => 'myproject',
             'nick' => 'pp',
         ]);
@@ -68,6 +70,7 @@ class ProjectTest extends TestCase
         $this->printTestStartMessage(__FUNCTION__);
 
         $project = Project::create([
+            'prefix' => 'myprefix',
             'name' => 'myproject',
             'nick' => 'pp',
         ]);

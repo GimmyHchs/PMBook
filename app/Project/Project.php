@@ -9,6 +9,7 @@ class Project extends ProjectEloquent
     protected $table = 'projects';
     protected $fillable = [
         'name',                     //專案名稱
+        'prefix',                   //專案前綴
         'nick',                     //專案代號
         'description',              //專案描述
     ];

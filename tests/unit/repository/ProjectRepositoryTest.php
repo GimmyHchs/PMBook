@@ -20,7 +20,7 @@ class ProjectRepositoryTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
-    
+
     /**
      * @var ProjectRepository
      */
@@ -58,6 +58,7 @@ class ProjectRepositoryTest extends TestCase
         $this->initRepository();
 
         $this->repository->save([
+            'prefix' => 'myprefix',
             'name' => 'myproject',
             'nick' => 'mp',
         ]);

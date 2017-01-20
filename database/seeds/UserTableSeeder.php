@@ -18,6 +18,12 @@ class UserTableSeeder extends Seeder
             'project_prefix' => 'Hchs',
             'password' => bcrypt('123456'),
         ]);
-        
+        User::create([
+            'name' => 'user',
+            'email' => 'user@hotmail.com',
+            'project_prefix' => 'User',
+            'password' => bcrypt('123456'),
+        ]);
+
     }
 }

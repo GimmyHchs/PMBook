@@ -32,7 +32,7 @@
                                 <label>專案名稱</label>
                                 <div class="ui labeled input">
                                   <div class="ui label">
-                                    prefix
+                                    {{user.project_prefix}} /
                                   </div>
                                   <input type="text" name="name" placeholder="專案名稱" v-model="inputs.name">
                                 </div>
@@ -77,7 +77,9 @@ export default {
             isActive:false,
             resource: this.$resource('/project{/id}'),
             message:{title:'警告', content:'警告!'},
+            user: PmbData.user,
             inputs:{
+                prefix: 'default',
                 name: 'Myproject',
                 nick: 'mp1',
                 description: '我的第一個專案，最厲害那種',
@@ -90,6 +92,7 @@ export default {
         // 發送 post ， 建立專案
         create(){
             this.toggleActive();
+            this.inputs.prefix = this.user.project_prefix;
             this.resource.save(null, this.inputs).then((response) => {
                 console.log(response.data);
                 this.clearInputs();

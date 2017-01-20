@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Project\CreateRequest;
 use App\Project\ProjectRepository;
+use Auth;
+use JavaScript;
 
 class ProjectController extends Controller
 {
@@ -27,6 +29,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        JavaScript::put([
+            'user' => $user->toSafeArray()
+        ]);
         return view('project.index');
     }
 

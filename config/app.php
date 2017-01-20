@@ -169,7 +169,10 @@ return [
 
         // Role and Permission Manage
         Hchs\Judge\JudgeServiceProvider::class,
-        
+
+        // Pass Data From PHP to JavaScript
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

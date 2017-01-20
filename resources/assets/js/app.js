@@ -20,5 +20,8 @@ require('./bootstrap');
  Vue.component('project-right-nav', require('./components/project/RightNav.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted(){
+        console.log('Root Vue Mounted');
+    }
 });
