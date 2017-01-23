@@ -173,6 +173,9 @@ return [
         // Pass Data From PHP to JavaScript
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
+        // Debug Tracer
+        Recca0120\LaravelTracy\LaravelTracyServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
