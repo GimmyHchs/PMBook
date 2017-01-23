@@ -13,11 +13,11 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- Vue.component('loading', require('./components/modules/Progress.vue'));
- Vue.component('message', require('./components/modules/Message.vue'));
+ Vue.component('loading', require('./components/modules/loading.vue'));
+ Vue.component('message', require('./components/modules/message.vue'));
 
- Vue.component('project-create', require('./components/project/Create.vue'));
- Vue.component('project-right-nav', require('./components/project/RightNav.vue'));
+ Vue.component('project-create', require('./components/project/create.vue'));
+ Vue.component('project-right-nav', require('./components/project/right-nav.vue'));
 
 const app = new Vue({
     el: '#app',

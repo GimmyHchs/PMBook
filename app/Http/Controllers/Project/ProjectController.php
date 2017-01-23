@@ -50,11 +50,13 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
     {
+        if($request->isFailed()) return $request->responseError();
+
+
         $project = $this->projects->create($request->all());
         return response()->json(['ok' => true, 'project' => $project], 200);
     }

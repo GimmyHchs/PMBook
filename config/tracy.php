@@ -21,7 +21,7 @@ return [
         'session' => true,
         'request' => true,
         'auth' => true,
-        'html-validator' => false,
+        'html-validator' => true,
         'terminal' => true,
     ],
 ];
