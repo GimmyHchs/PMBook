@@ -111,4 +111,27 @@ class UserTest extends TestCase
         $this->assertEquals(count($user->projects()->get()), 2);
     }
 
+    /**
+     * User 與 Project的創建者關聯.
+     *
+     * @group unit
+     * @group auth
+     */
+    public function testCanCreateProject()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        $user = factory(User::class)->create([
+            'name' => 'Test User',
+            'password' => encrypt('123456'),
+            'email' => 'test@test.com.tw',
+        ]);
+        $project = factory(Project::class)->make(['name' => 'myproject']);
+        $project2 = factory(Project::class)->make(['name' => 'myproject2']);
+        $user->createProject($project);
+        $user->createProject($project2);
+        $user->createProject($project2);
+
+        $this->assertEquals(count($user->ownProjects()->get()), 2);
+    }
+
 }

@@ -3,28 +3,32 @@
     @include('project.left-menu')
 @endsection
 @section('content')
+<form action="{{url('/project/selected/delete')}}" method="post">
+    {{csrf_field()}}
+    <input name="_method" type="hidden" value="DELETE">
 <table class="ui compact celled definition table">
+
 <thead class="full-width">
     <tr>
         <th></th>
-        <th>Name</th>
-        <th>Registration Date</th>
-        <th>E-mail address</th>
-        <th>Premium Plan</th>
+        <th>專案名稱</th>
+        <th>專案代號</th>
+        <th>建立者</th>
+        <th>建立時間</th>
     </tr>
 </thead>
 <tbody>
-    @foreach ($projects as $project)
+    @foreach ($projects as $index => $project)
         <tr>
             <td class="collapsing">
                 <div class="ui fitted slider checkbox">
-                    <input type="checkbox"> <label></label>
+                    <input type="checkbox" name="{{'ids['.$index.']'}}" value="{{$project->id}}"> <label></label>
                 </div>
             </td>
-            <td>John Lilki</td>
-            <td>September 14, 2013</td>
-            <td>jhlilk22@yahoo.com</td>
-            <td>No</td>
+            <td>{{$project->prefix.'/'.$project->name}}</td>
+            <td>{{$project->nick}}</td>
+            <td>{{$project->creator->name}}</td>
+            <td>{{$project->created_at}}</td>
         </tr>
     @endforeach
 </tbody>
@@ -32,19 +36,14 @@
     <tr>
         <th></th>
         <th colspan="4">
-        <div class="ui right floated small primary labeled icon button">
-            <i class="user icon"></i> Add User
-        </div>
-        <div class="ui small  button">
-            Approve
-        </div>
-        <div class="ui small  disabled button">
-            Approve All
-        </div>
+        <button type="submit" class="ui small orange button">
+            刪除
+        </button>
         </th>
     </tr>
 </tfoot>
 </table>
+</form>
 @endsection
 @section('right-nav')
     <project-right-nav></project-right-nav>

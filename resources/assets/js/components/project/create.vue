@@ -2,7 +2,7 @@
     <div class="ui modal create">
 
         <!-- 額外模組 loading -->
-        <loading :isActive="true" :text="'Test...'"></loading>
+        <loading :isActive="isActive" :text="'Test...'"></loading>
 
         <!-- 額外模組 message -->
         <message
@@ -74,7 +74,7 @@
 export default {
     data(){
         return {
-            isActive: true,
+            isActive: false,
             resource: this.$resource('/project{/id}'),
             message:{title:'警告', content:'警告!'},
             user: PmbData.user,
@@ -97,6 +97,7 @@ export default {
                 console.log(response.data);
                 this.clearInputs();
                 this.toggleActive();
+                document.location.href = '/project';
             }, (response) => {
                 this.toggleActive();
                 this.handleError(response);

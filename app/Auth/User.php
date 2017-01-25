@@ -28,6 +28,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class);
     }
+    public function ownProjects()
+    {
+        return $this->hasMany(Project::class, 'creator_id');
+    }
     /*------------------------------------------------------------------------**
     ** Method
     **------------------------------------------------------------------------*/
@@ -38,6 +42,20 @@ class User extends Authenticatable
     public function joinProjects($projects)
     {
         return $this->projects()->syncWithoutDetaching($projects->pluck('id')->toArray());
+    }
+    public function createProject($project)
+    {
+        if($project instanceof Project)
+        {
+            if($project->getDirty()){
+                return $this->ownProjects()->save($project);
+            }else {
+                return $project->touch();
+            }
+        }elseif (is_array($project)) {
+            $project = $this->newInstance($project);
+            return $this->createProject($project);
+        }
     }
     public function toSafeArray()
     {

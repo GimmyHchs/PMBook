@@ -13,9 +13,16 @@ class ProjectTableSeeder extends Seeder
      */
     public function run()
     {
-
-        $projects = factory(Project::class, 4)->create();
         $user = User::find(1);
+
+        $projects = factory(Project::class, 4)->make();
+        
+        $projects->each(function ($project, $key) use ($user){
+            $user->createProject($project);
+        });
+
         $user->joinProjects($projects);
+
+
     }
 }

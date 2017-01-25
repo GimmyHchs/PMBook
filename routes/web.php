@@ -15,12 +15,12 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@login');
     Route::post('login', 'LoginController@attempt');
     Route::get('logout', 'LoginController@logout');
-
 });
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
 });
 Route::group(['namespace' => 'Project', 'middleware' => 'auth'], function () {
+    Route::delete('project/selected/delete', 'ProjectController@selectedDelete');
     Route::resource('project', 'ProjectController');
 });

@@ -33,7 +33,7 @@ class ProjectController extends Controller
         JavaScript::put([
             'user' => $user->toSafeArray()
         ]);
-        $projects = $this->projects->getAll();
+        $projects = $this->projects->getAll()->get();
         return view('project.index', compact('projects'));
     }
 
@@ -56,8 +56,9 @@ class ProjectController extends Controller
     {
         if($request->isFailed()) return $request->responseError();
 
+        $project = $this->projects->getNew($request->all());
+        Auth::user()->createProject($project);
 
-        $project = $this->projects->create($request->all());
         return response()->json(['ok' => true, 'project' => $project], 200);
     }
 
@@ -104,5 +105,16 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * 刪除選取的 projects
+     */
+    public function selectedDelete(Request $request)
+    {
+        $projects = $this->projects->getModel()->find($request->ids);
+        $this->projects->deleteMany($projects);
+
+        return redirect('/project');
     }
 }

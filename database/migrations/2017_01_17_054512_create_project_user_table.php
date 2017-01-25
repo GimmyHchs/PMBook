@@ -20,8 +20,8 @@ class CreateProjectUserTable extends Migration
             $table->timestamps();
 
             //foreign Key Set
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
 
     }

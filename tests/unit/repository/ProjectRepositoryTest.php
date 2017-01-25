@@ -47,7 +47,7 @@ class ProjectRepositoryTest extends TestCase
     }
 
     /**
-     * 建構repository.
+     * 創建project.
      *
      * @group unit
      * @group repository
@@ -67,5 +67,23 @@ class ProjectRepositoryTest extends TestCase
 
         $this->assertEquals($target->name, 'myproject');
         $this->assertEquals($target->nick, 'mp');
+    }
+
+    /**
+     * 刪除多個project.
+     *
+     * @group unit
+     * @group repository
+     */
+    public function testCanDeleteMany()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        $this->initRepository();
+        $projects = factory(Project::class, 5)->create();
+
+        $this->repository->deleteMany($projects);
+
+        $count = count(Project::all());
+        $this->assertEquals($count, 0);
     }
 }

@@ -8,6 +8,7 @@ class Project extends ProjectEloquent
 {
     protected $table = 'projects';
     protected $fillable = [
+        'creator_id',               //關聯創建者
         'name',                     //專案名稱
         'prefix',                   //專案前綴
         'nick',                     //專案代號
@@ -24,6 +25,10 @@ class Project extends ProjectEloquent
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     /*------------------------------------------------------------------------**

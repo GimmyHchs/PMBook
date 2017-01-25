@@ -1,6 +1,8 @@
 <?php
 namespace App\Core;
 
+use Illuminate\Database\Eloquent\Collection;
+
 /**
  * Repository 抽象核心
  */
@@ -73,6 +75,19 @@ abstract class Repository
         return $this->model->orderBy('id', 'DESC');
     }
 
+    /**
+    * 將傳入的集合，依序刪除
+    *
+    * @param Illuminate\Database\Eloquent\Collection
+    */
+    public function deleteMany($collection)
+    {
+        if(!$collection instanceof Collection) return;
+
+        foreach ($collection as $model) {
+            $model->delete();
+        }
+    }
     /*------------------------------------------------------------------------**
     ** protected 輔助方法                                                      **
     **------------------------------------------------------------------------*/
