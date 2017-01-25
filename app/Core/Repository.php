@@ -76,6 +76,14 @@ abstract class Repository
     }
 
     /**
+     * 回傳find的結果
+     */
+    public function find($key)
+    {
+        return $this->model->find($key);
+    }
+
+    /**
     * 將傳入的集合，依序刪除
     *
     * @param Illuminate\Database\Eloquent\Collection

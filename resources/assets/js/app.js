@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./vuex/store.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,9 +19,9 @@ require('./bootstrap');
 
  Vue.component('project-create', require('./components/project/create.vue'));
  Vue.component('project-right-nav', require('./components/project/right-nav.vue'));
-
 const app = new Vue({
     el: '#app',
+    store,
     mounted(){
         console.log('Root Vue Mounted');
     }

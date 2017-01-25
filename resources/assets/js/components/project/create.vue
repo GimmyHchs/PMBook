@@ -130,6 +130,7 @@ export default {
     },
     mounted() {
         console.log('Create mounted.')
+        this.$store.dispatch('changeProject');
     }
 }
 </script>

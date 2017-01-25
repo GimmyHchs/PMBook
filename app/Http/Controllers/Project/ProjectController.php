@@ -29,10 +29,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        JavaScript::put([
-            'user' => $user->toSafeArray()
-        ]);
+        $this->shareUserToJS();
         $projects = $this->projects->getAll()->get();
         return view('project.index', compact('projects'));
     }
@@ -70,7 +67,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = $this->projects->find($id);
+        return response()->json(['ok' => true, 'project' => $project], 200);
     }
 
     /**

@@ -25,6 +25,7 @@
         },
         mounted() {
             console.log('Loading component mounted.')
+            
         }
     }
 </script>
