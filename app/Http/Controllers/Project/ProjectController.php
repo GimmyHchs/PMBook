@@ -27,12 +27,14 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax())
+        {
+            return $this->projects->getAll()->get()->toArray();
+        }
         $this->shareUserToJS();
-        $projects = $this->projects->getAll()->get()->toArray();
-        $this->shareToJs(compact('projects'));
-        return view('project.index', compact('projects'));
+        return view('project.index');
     }
 
     /**

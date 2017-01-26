@@ -3,10 +3,14 @@ import api from './api.js';
 window.store = new Vuex.Store({
     state: {
         project: null,
+        projects: null,
     },
     mutations: {
         changeProject (state, project) {
             state.project = project;
+        },
+        fetchProjects (state, projects){
+            state.projects = projects;
         }
     },
     actions:{
@@ -14,7 +18,15 @@ window.store = new Vuex.Store({
             Vue.http.get('/project/'+id).then((response) => {
                 context.commit('changeProject', response.data.project);
             }, (response) => {
-                console.log('error from ProjectService');
+                console.log('error from changeProject');
+                return null;
+            })
+        },
+        fetchProjects (context) {
+            Vue.http.get('/project').then((response) => {
+                context.commit('fetchProjects', response.data);
+            }, (response) => {
+                console.log('error from fetchProjects');
                 return null;
             })
         },

@@ -18,7 +18,7 @@
             </td>
             <td>{{project.prefix}}/{{project.name}}</td>
             <td>{{project.nick}}</td>
-            <td></td>
+            <td>{{project.creator_name}}</td>
             <td>{{project.created_at}}</td>
         </tr>
     </tbody>
@@ -37,16 +37,20 @@
 
 <script>
 export default {
-    props:{
-        projects:{
-            default : () => null,
-        },
-    },
     data(){
         return {
             selected_ids:[],
             selected_now:null,
+            resource: this.$resource('/project{/id}'),
         }
+    },
+    computed:{
+        projects(){
+            return this.$store.state.projects;
+        }
+    },
+    mounted(){
+        this.$store.dispatch('fetchProjects');
     }
 }
 </script>
