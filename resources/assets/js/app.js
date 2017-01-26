@@ -17,6 +17,7 @@ require('./vuex/store.js');
  Vue.component('loading', require('./components/modules/loading.vue'));
  Vue.component('message', require('./components/modules/message.vue'));
 
+ Vue.component('project-table', require('./components/project/table.vue'));
  Vue.component('project-create', require('./components/project/create.vue'));
  Vue.component('project-right-nav', require('./components/project/right-nav.vue'));
 const app = new Vue({

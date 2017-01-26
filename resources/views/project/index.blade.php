@@ -18,19 +18,7 @@
     </tr>
 </thead>
 <tbody>
-    @foreach ($projects as $index => $project)
-        <tr>
-            <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                    <input type="checkbox" name="{{'ids['.$index.']'}}" value="{{$project->id}}"> <label></label>
-                </div>
-            </td>
-            <td>{{$project->prefix.'/'.$project->name}}</td>
-            <td>{{$project->nick}}</td>
-            <td>{{$project->creator->name}}</td>
-            <td>{{$project->created_at}}</td>
-        </tr>
-    @endforeach
+
 </tbody>
 <tfoot class="full-width">
     <tr>

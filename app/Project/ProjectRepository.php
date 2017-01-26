@@ -33,7 +33,7 @@ class ProjectRepository extends Repository
      */
     public function getFromNick(String $nick)
     {
-        return $this->model->whereSlug(urlencode($nick))->get();
+        return $this->model->whereSlug($nick)->get();
     }
 
     /**

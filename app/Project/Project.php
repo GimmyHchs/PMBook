@@ -14,7 +14,12 @@ class Project extends ProjectEloquent
         'nick',                     //專案代號
         'description',              //專案描述
     ];
-
+    protected $appends = [
+        'creator_name',             //建立者名稱
+    ];
+    protected $hidden = [
+        'creator',
+    ];
     /*------------------------------------------------------------------------**
     ** Relations
     **------------------------------------------------------------------------*/
@@ -30,7 +35,14 @@ class Project extends ProjectEloquent
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
-
+    /*------------------------------------------------------------------------**
+    ** Accessors
+    **------------------------------------------------------------------------*/
+    public function getCreatorNameAttribute()
+    {
+        if($this->creator)
+            return $this->creator->name;
+    }
     /*------------------------------------------------------------------------**
     ** methods
     **------------------------------------------------------------------------*/

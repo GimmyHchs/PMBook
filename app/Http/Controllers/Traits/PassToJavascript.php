@@ -11,11 +11,16 @@ trait PassToJavascript
     /**
      * 將 user資訊 傳送至 javascript
      */
-    function shareUserToJS()
+    public function shareUserToJS()
     {
         $user = Auth::user();
         JavaScript::put([
             'user' => $user->toSafeArray()
         ]);
+    }
+
+    public function shareToJs($array)
+    {
+        JavaScript::put($array);
     }
 }

@@ -10,17 +10,13 @@ window.store = new Vuex.Store({
         }
     },
     actions:{
-        changeProject (context) {
-            // var project = api.ProjectService.getById(10);
-            Vue.http.get('/project/10').then((response) => {
-                console.log(response.data);
+        changeProject (context, id) {
+            Vue.http.get('/project/'+id).then((response) => {
                 context.commit('changeProject', response.data.project);
             }, (response) => {
                 console.log('error from ProjectService');
                 return null;
             })
-            // console.log(project);
-            // context.commit('changeProject', project);
         },
         mylog (context) {
             api.loghere();

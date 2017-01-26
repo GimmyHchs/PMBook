@@ -30,7 +30,8 @@ class ProjectController extends Controller
     public function index()
     {
         $this->shareUserToJS();
-        $projects = $this->projects->getAll()->get();
+        $projects = $this->projects->getAll()->get()->toArray();
+        $this->shareToJs(compact('projects'));
         return view('project.index', compact('projects'));
     }
 
