@@ -21,7 +21,6 @@ class ProjectController extends Controller
         $this->projects = $projects;
     }
 
-
     /**
      * Display a listing of the resource.
      *
