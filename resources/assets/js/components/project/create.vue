@@ -2,7 +2,7 @@
     <div class="ui modal create">
 
         <!-- 額外模組 loading -->
-        <loading :isActive="isActive" :text="'Test...'"></loading>
+        <loading :isActive="isActive" :text="'Creating...'"></loading>
 
         <!-- 額外模組 message -->
         <message
@@ -97,7 +97,11 @@ export default {
                 console.log(response.data);
                 this.clearInputs();
                 this.toggleActive();
-                document.location.href = '/project';
+                // 使用重新導向的方式重整頁面
+                // document.location.href = '/project';
+
+                // 使用vuex重新抓取Project列表的方式
+                this.$store.dispatch('fetchProjects');
             }, (response) => {
                 this.toggleActive();
                 this.handleError(response);

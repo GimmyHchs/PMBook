@@ -20,6 +20,7 @@ require('./vuex/store.js');
  Vue.component('project-table', require('./components/project/table.vue'));
  Vue.component('project-create', require('./components/project/create.vue'));
  Vue.component('project-right-nav', require('./components/project/right-nav.vue'));
+ Vue.component('project-left-nav', require('./components/project/left-nav.vue'));
 const app = new Vue({
     el: '#app',
     store,

@@ -13,12 +13,18 @@ window.store = new Vuex.Store({
             state.projects = projects;
         }
     },
+    getters: {
+        projectName (state){
+            if(state.project) return ' - '+state.project.name;
+            return '';
+        },
+    },
     actions:{
-        changeProject (context, id) {
+        fetchProject (context) {
             Vue.http.get('/project/'+id).then((response) => {
                 context.commit('changeProject', response.data.project);
             }, (response) => {
-                console.log('error from changeProject');
+                console.log('error from fetchProject');
                 return null;
             })
         },

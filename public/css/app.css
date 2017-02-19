@@ -37156,6 +37156,10 @@ html.ios body {
   margin-top: 80px !important;
 }
 
+.left-project-name {
+  color: #333333;
+}
+
 .right-icon {
   position: absolute;
   right: 1em;

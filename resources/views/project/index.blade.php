@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('left-nav')
-    @include('project.left-menu')
+    <project-left-nav></project-left-nav>
 @endsection
 @section('content')
     <project-table></project-table>

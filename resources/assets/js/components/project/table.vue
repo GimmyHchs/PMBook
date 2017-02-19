@@ -13,10 +13,10 @@
         <tr v-for="(project, index) in projects">
             <td class="collapsing">
                 <div class="ui fitted slider checkbox">
-                    <input type="checkbox"><label></label>
+                    <input type="checkbox" @click="toggleCheck(project.id)"><label></label>
                 </div>
             </td>
-            <td>{{project.prefix}}/{{project.name}}</td>
+            <td @click="chooseProject(project)">{{project.prefix}}/{{project.name}}</td>
             <td>{{project.nick}}</td>
             <td>{{project.creator_name}}</td>
             <td>{{project.created_at}}</td>
@@ -40,7 +40,6 @@ export default {
     data(){
         return {
             selected_ids:[],
-            selected_now:null,
             resource: this.$resource('/project{/id}'),
         }
     },
@@ -48,6 +47,20 @@ export default {
         projects(){
             return this.$store.state.projects;
         }
+    },
+    methods:{
+        chooseProject(project){
+            this.$store.commit('changeProject', project);
+        },
+        toggleCheck(id){
+            var indexOfId = this.selected_ids.indexOf(id);
+
+            if(indexOfId == -1){
+                this.selected_ids.push(id);
+            }else {
+                this.selected_ids.splice(indexOfId, 1);
+            }
+        },
     },
     mounted(){
         this.$store.dispatch('fetchProjects');
