@@ -104,7 +104,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd('here');
+        $this->projects->delete($id);
+        return response()->json(['ok' => true], 200);
     }
 
     /**

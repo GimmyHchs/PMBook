@@ -11,7 +11,13 @@ window.store = new Vuex.Store({
         },
         fetchProjects (state, projects){
             state.projects = projects;
-        }
+        },
+        deleteProject (state, id){
+            state.projects = state.projects.filter(function(project) {
+                return project.id != id;
+            });
+            state.project = null;
+        },
     },
     getters: {
         projectName (state){
@@ -33,6 +39,15 @@ window.store = new Vuex.Store({
                 context.commit('fetchProjects', response.data);
             }, (response) => {
                 console.log('error from fetchProjects');
+                return null;
+            })
+        },
+        deleteProject (context, id) {
+            console.log('action delete');
+            Vue.http.delete('/project/'+id).then((response) => {
+                context.commit('deleteProject', id);
+            }, (response) => {
+                console.log('error from deleteProject');
                 return null;
             })
         },

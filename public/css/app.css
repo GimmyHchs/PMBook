@@ -37173,4 +37173,8 @@ html.ios body {
   }
 }
 
+tr.selected {
+  background: #e3f2fd;
+}
+
 /*# sourceMappingURL=app.css.map */

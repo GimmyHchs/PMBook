@@ -83,6 +83,11 @@ abstract class Repository
         return $this->model->find($key);
     }
 
+    public function delete($id)
+    {
+        return $this->model->find($id)->delete();
+    }
+
     /**
     * 將傳入的集合，依序刪除
     *

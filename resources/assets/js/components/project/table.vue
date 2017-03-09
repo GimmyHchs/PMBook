@@ -1,8 +1,7 @@
 <template lang="html">
-    <table class="ui compact celled definition table">
+    <table v-if="this" class="ui compact celled definition table">
     <thead class="full-width">
         <tr>
-            <th></th>
             <th>專案名稱</th>
             <th>專案代號</th>
             <th>建立者</th>
@@ -10,12 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr v-for="(project, index) in projects">
-            <td class="collapsing">
-                <div class="ui fitted slider checkbox">
-                    <input type="checkbox" @click="toggleCheck(project.id)"><label></label>
-                </div>
-            </td>
+        <tr v-for="(project, index) in projects" :class="{'selected':isSelected(project)}">
             <td @click="chooseProject(project)">{{project.prefix}}/{{project.name}}</td>
             <td>{{project.nick}}</td>
             <td>{{project.creator_name}}</td>
@@ -24,9 +18,8 @@
     </tbody>
     <tfoot class="full-width">
         <tr>
-            <th></th>
             <th colspan="4">
-            <button type="submit" class="ui small orange button">
+            <button @click="deleteSelected()" class="ui small orange button">
                 刪除
             </button>
             </th>
@@ -39,7 +32,7 @@
 export default {
     data(){
         return {
-            selected_ids:[],
+            selected_id:null,
             resource: this.$resource('/project{/id}'),
         }
     },
@@ -49,7 +42,17 @@ export default {
         }
     },
     methods:{
+        isSelected(project){
+            return (project.id == this.selected_id);
+        },
+        deleteSelected(){
+            if(this.selected_id){
+                this.$store.dispatch('deleteProject', this.selected_id);
+            }
+            this.selected_id = null;
+        },
         chooseProject(project){
+            this.selected_id = project.id;
             this.$store.commit('changeProject', project);
         },
         toggleCheck(id){
